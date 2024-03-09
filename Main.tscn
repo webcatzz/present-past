@@ -1,0 +1,225 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Rooms/test.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Root.gd" type="Script" id=2]
+[ext_resource path="res://Input.gd" type="Script" id=3]
+[ext_resource path="res://Assets/UI/frame-input.png" type="Texture" id=4]
+[ext_resource path="res://Godot/Theme.tres" type="Theme" id=6]
+[ext_resource path="res://Assets/UI/crt.png" type="Texture" id=7]
+[ext_resource path="res://Godot/crt.shader" type="Shader" id=8]
+[ext_resource path="res://OutputDisplay.gd" type="Script" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 37, 57 )
+margin_left = 18.0
+margin_right = 18.0
+margin_top = 33.0
+margin_bottom = 23.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="AudioStreamRandomPitch" id=7]
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 8 )
+shader_param/screen_width = 588.0
+shader_param/screen_height = 588.0
+shader_param/BarrelPower = 1.02
+shader_param/color_bleeding = 1.1
+shader_param/bleeding_range_x = 1.0
+shader_param/bleeding_range_y = 1.0
+shader_param/lines_distance = 4.0
+shader_param/scan_size = 2.0
+shader_param/scanline_alpha = 0.9
+shader_param/lines_velocity = 30.0
+
+[node name="Root" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+script = ExtResource( 2 )
+
+[node name="WindowMargins" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -98.0
+margin_top = -98.0
+margin_right = 98.0
+margin_bottom = 98.0
+rect_scale = Vector2( 3, 3 )
+rect_pivot_offset = Vector2( 98, 98 )
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+
+[node name="WindowSeparator" type="VBoxContainer" parent="WindowMargins"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 194.0
+margin_bottom = 194.0
+custom_constants/separation = -23
+
+[node name="RoomDisplay" type="MarginContainer" parent="WindowMargins/WindowSeparator"]
+margin_right = 192.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 192, 129 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_constants/margin_right = 1
+custom_constants/margin_top = 1
+custom_constants/margin_left = 1
+custom_constants/margin_bottom = 1
+
+[node name="Room" parent="WindowMargins/WindowSeparator/RoomDisplay" instance=ExtResource( 1 )]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 191.0
+margin_bottom = 128.0
+
+[node name="WindowControls" type="VBoxContainer" parent="WindowMargins/WindowSeparator"]
+margin_top = 106.0
+margin_right = 192.0
+margin_bottom = 192.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 1
+
+[node name="InventoryDisplay" type="PanelContainer" parent="WindowMargins/WindowSeparator/WindowControls"]
+margin_right = 192.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 22 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="InventoryMargins" type="MarginContainer" parent="WindowMargins/WindowSeparator/WindowControls/InventoryDisplay"]
+margin_right = 192.0
+margin_bottom = 22.0
+custom_constants/margin_left = 4
+
+[node name="InventorySeparator" type="HBoxContainer" parent="WindowMargins/WindowSeparator/WindowControls/InventoryDisplay/InventoryMargins"]
+margin_left = 4.0
+margin_right = 192.0
+margin_bottom = 22.0
+custom_constants/separation = 1
+alignment = 2
+
+[node name="TextDisplay" type="PanelContainer" parent="WindowMargins/WindowSeparator/WindowControls"]
+margin_top = 23.0
+margin_right = 192.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 0, 63 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="TextMargins" type="MarginContainer" parent="WindowMargins/WindowSeparator/WindowControls/TextDisplay"]
+margin_left = 18.0
+margin_top = 33.0
+margin_right = 174.0
+margin_bottom = 40.0
+custom_constants/margin_right = -11
+custom_constants/margin_top = -27
+custom_constants/margin_left = -11
+custom_constants/margin_bottom = -19
+
+[node name="TextSeparator" type="VBoxContainer" parent="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins"]
+margin_left = -11.0
+margin_top = -27.0
+margin_right = 167.0
+margin_bottom = 26.0
+custom_constants/separation = 8
+
+[node name="OutputDisplay" type="ScrollContainer" parent="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator"]
+margin_right = 178.0
+margin_bottom = 37.0
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+script = ExtResource( 9 )
+
+[node name="Tween" type="Tween" parent="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator/OutputDisplay"]
+
+[node name="OutputSeparator" type="VBoxContainer" parent="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator/OutputDisplay"]
+margin_right = 178.0
+size_flags_horizontal = 3
+custom_constants/separation = 2
+
+[node name="InputSeparator" type="HBoxContainer" parent="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator"]
+margin_top = 45.0
+margin_right = 178.0
+margin_bottom = 53.0
+rect_pivot_offset = Vector2( 0, 10 )
+custom_constants/separation = 2
+
+[node name="InputCaret" type="Label" parent="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator/InputSeparator"]
+margin_right = 4.0
+margin_bottom = 8.0
+custom_colors/font_color = Color( 0.227451, 0.247059, 0.247059, 1 )
+text = ">"
+
+[node name="InputField" type="LineEdit" parent="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator/InputSeparator"]
+margin_left = 6.0
+margin_right = 178.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+custom_colors/cursor_color = Color( 0.227451, 0.247059, 0.247059, 1 )
+custom_colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.227451, 0.247059, 0.247059, 1 )
+custom_styles/read_only = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+caret_blink = true
+caret_blink_speed = 0.5
+script = ExtResource( 3 )
+
+[node name="Typing" type="AudioStreamPlayer" parent="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator/InputSeparator/InputField"]
+stream = SubResource( 7 )
+volume_db = -5.0
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="CRT" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 6 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -294.0
+margin_top = -294.0
+margin_right = 294.0
+margin_bottom = 294.0
+rect_min_size = Vector2( 588, 588 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HTML" type="TextureRect" parent="CRT"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+stretch_mode = 2
+
+[node name="Background" type="ColorRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="text_changed" from="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator/InputSeparator/InputField" to="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator/InputSeparator/InputField" method="_on_InputField_text_changed"]
+[connection signal="text_entered" from="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator/InputSeparator/InputField" to="WindowMargins/WindowSeparator/WindowControls/TextDisplay/TextMargins/TextSeparator/InputSeparator/InputField" method="_on_Input_text_entered"]
