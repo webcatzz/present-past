@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cyrm7npw5cy1l"]
+
+[ext_resource type="Script" path="res://data/items/item.gd" id="1_3fy7a"]
+[ext_resource type="Texture2D" uid="uid://cwyhl67x5n3o1" path="res://assets/items/candle_unlit.png" id="2_cgeek"]
+
+[resource]
+script = ExtResource("1_3fy7a")
+name = "candle"
+sprite = ExtResource("2_cgeek")
+description = "Your candle. You should light it, ASAP."

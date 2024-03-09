@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://dqsrrf4xgojnl"]
+
+[ext_resource type="Texture2D" uid="uid://2s2eh7kdpoej" path="res://assets/rooms/house_outside.png" id="1_vxo5h"]
+[ext_resource type="Script" path="res://data/rooms/room.gd" id="2_hdxwb"]
+[ext_resource type="Script" path="res://data/targets/portal.gd" id="3_8xklv"]
+[ext_resource type="Script" path="res://data/targets/target.gd" id="4_xedv4"]
+
+[sub_resource type="Resource" id="Resource_yoxl1"]
+script = ExtResource("3_8xklv")
+destination = "house_door"
+names = PackedStringArray("house", "door")
+sfx = ""
+description = "Your childhood home. Feels... you don't really know how it feels to be back."
+
+[sub_resource type="Resource" id="Resource_vgkc6"]
+script = ExtResource("4_xedv4")
+names = PackedStringArray("bush")
+sfx = "noise_high"
+description = "You poke around in the bush. Unsurprisingly, there's nothing there."
+
+[sub_resource type="Resource" id="Resource_wyhn3"]
+script = ExtResource("4_xedv4")
+names = PackedStringArray("window", "windows")
+sfx = ""
+description = "...Pitch black."
+
+[resource]
+script = ExtResource("2_hdxwb")
+background = ExtResource("1_vxo5h")
+targets = Array[ExtResource("4_xedv4")]([SubResource("Resource_yoxl1"), SubResource("Resource_vgkc6"), SubResource("Resource_wyhn3")])
+intro = ""

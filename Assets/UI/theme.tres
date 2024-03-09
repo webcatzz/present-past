@@ -1,0 +1,124 @@
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://jxry00u4o2pd"]
+
+[ext_resource type="FontFile" uid="uid://dej34krgdhtno" path="res://assets/ui/font.ttf" id="1_atwnr"]
+[ext_resource type="Texture2D" uid="uid://bymqeccq7cdh6" path="res://assets/ui/button.png" id="1_vv8kx"]
+[ext_resource type="Texture2D" uid="uid://cad60mo8x34jf" path="res://assets/ui/slider.png" id="2_4d6gj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdnkj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tk2m"]
+atlas = ExtResource("1_vv8kx")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bv1tn"]
+content_margin_left = 4.0
+content_margin_top = 3.0
+content_margin_right = 4.0
+content_margin_bottom = 5.0
+texture = SubResource("AtlasTexture_4tk2m")
+texture_margin_left = 6.0
+texture_margin_top = 5.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaivq"]
+atlas = ExtResource("1_vv8kx")
+region = Rect2(0, 0, 17, 17)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kl0mq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+texture = SubResource("AtlasTexture_kaivq")
+texture_margin_left = 6.0
+texture_margin_top = 3.0
+texture_margin_right = 6.0
+texture_margin_bottom = 4.0
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yhe6"]
+atlas = ExtResource("1_vv8kx")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1a0t3"]
+content_margin_left = 4.0
+content_margin_top = 5.0
+content_margin_right = 4.0
+content_margin_bottom = 3.0
+texture = SubResource("AtlasTexture_1yhe6")
+texture_margin_left = 4.0
+texture_margin_top = 3.0
+texture_margin_right = 4.0
+texture_margin_bottom = 3.0
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xg4ay"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+color = Color(0.227451, 0.247059, 0.247059, 1)
+grow_begin = 0.0
+grow_end = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sbuxe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_goktd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ithgw"]
+content_margin_top = 2.0
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.227451, 0.247059, 0.247059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5tt1"]
+content_margin_top = 0.0
+content_margin_bottom = 3.0
+bg_color = Color(0.376471, 0.133333, 0.0901961, 1)
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 0)
+expand_margin_left = 4.0
+expand_margin_top = 1.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkdvv"]
+
+[resource]
+default_font = ExtResource("1_atwnr")
+default_font_size = 8
+BoxContainer/constants/separation = 0
+Button/colors/font_color = Color(0.623529, 0.627451, 0.537255, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_vdnkj")
+Button/styles/hover = SubResource("StyleBoxTexture_bv1tn")
+Button/styles/normal = SubResource("StyleBoxTexture_kl0mq")
+Button/styles/pressed = SubResource("StyleBoxTexture_1a0t3")
+HSeparator/constants/separation = 5
+HSeparator/styles/separator = SubResource("StyleBoxLine_xg4ay")
+HSlider/icons/grabber = ExtResource("2_4d6gj")
+HSlider/icons/grabber_highlight = ExtResource("2_4d6gj")
+HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_sbuxe")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_goktd")
+HSlider/styles/slider = SubResource("StyleBoxFlat_ithgw")
+Label/colors/font_color = Color(0.407843, 0.435294, 0.435294, 1)
+Label/constants/line_spacing = 2
+OutputCommand/base_type = &"Label"
+OutputCommand/colors/font_color = Color(0.227451, 0.247059, 0.247059, 1)
+OutputError/base_type = &"Label"
+OutputError/colors/font_color = Color(0.407843, 0.435294, 0.435294, 1)
+OutputError/constants/line_spacing = 0
+OutputError/styles/normal = SubResource("StyleBoxFlat_f5tt1")
+OutputMessage/base_type = &"Label"
+OutputText/base_type = &"Label"
+OutputText/colors/font_color = Color(0, 0, 0, 1)
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_pkdvv")

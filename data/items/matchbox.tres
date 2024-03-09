@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bywq38sfq00lq"]
+
+[ext_resource type="Script" path="res://data/items/item.gd" id="1_ia3gn"]
+[ext_resource type="Texture2D" uid="uid://npq0w46bcck5" path="res://assets/items/matchbox.png" id="2_dxeox"]
+
+[resource]
+script = ExtResource("1_ia3gn")
+name = "Matchbox"
+sprite = ExtResource("2_dxeox")

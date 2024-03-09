@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxm4ga7b5osoo"]
+
+[ext_resource type="Theme" uid="uid://jxry00u4o2pd" path="res://assets/ui/theme.tres" id="1_2pe0e"]
+[ext_resource type="Texture2D" uid="uid://dhujra0rqkwcm" path="res://assets/ui/frame-input.png" id="1_qv44v"]
+[ext_resource type="Script" path="res://data/ui/slot.gd" id="2_lwmph"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mluw0"]
+content_margin_left = 3.0
+content_margin_top = 4.0
+content_margin_right = 3.0
+content_margin_bottom = 2.0
+texture = ExtResource("1_qv44v")
+region_rect = Rect2(37, 21, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxaxp"]
+atlas = ExtResource("1_qv44v")
+region = Rect2(37, 43, 22, 3)
+
+[node name="Slot" type="Control"]
+custom_minimum_size = Vector2(22, 23)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 22.0
+offset_bottom = 23.0
+theme = ExtResource("1_2pe0e")
+script = ExtResource("2_lwmph")
+
+[node name="Panel" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Card" type="PanelContainer" parent="Panel"]
+layout_mode = 2
+offset_top = 12.0
+offset_right = 22.0
+offset_bottom = 34.0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mluw0")
+
+[node name="Sprite" type="TextureRect" parent="Panel/Card"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Shadow" type="TextureRect" parent="Panel"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 22.0
+offset_bottom = 23.0
+size_flags_vertical = 8
+mouse_filter = 2
+texture = SubResource("AtlasTexture_oxaxp")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 11.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/line_spacing = 0
+text = "[...]"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="on_mouseover" binds= [true]]
+[connection signal="mouse_exited" from="." to="." method="on_mouseover" binds= [false]]

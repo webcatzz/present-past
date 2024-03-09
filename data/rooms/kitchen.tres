@@ -1,0 +1,43 @@
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://bhgbgopjbxwrp"]
+
+[ext_resource type="Script" path="res://data/rooms/room.gd" id="1_yunjk"]
+[ext_resource type="Script" path="res://data/targets/pickup.gd" id="2_dtj3k"]
+[ext_resource type="Script" path="res://data/targets/portal.gd" id="3_0jmbg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_frf6c"]
+size = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_dgv7e"]
+script = ExtResource("2_dtj3k")
+item = "matchbox"
+position = Vector2(0, 0)
+visible = true
+frames = PackedFloat32Array()
+frame_sfx = PackedStringArray()
+names = PackedStringArray("matchbox", "matches")
+sfx = ""
+description = "Just what you need, and *full* of matches, too!"
+
+[sub_resource type="Resource" id="Resource_keapa"]
+script = ExtResource("2_dtj3k")
+item = "candle_unlit"
+position = Vector2(0, 0)
+visible = true
+frames = PackedFloat32Array()
+frame_sfx = PackedStringArray()
+names = PackedStringArray("candle")
+sfx = ""
+description = "A candle. Has a holder for ease of use."
+
+[sub_resource type="Resource" id="Resource_vtkiw"]
+script = ExtResource("3_0jmbg")
+destination = "living_room"
+names = PackedStringArray("living room")
+sfx = ""
+description = ""
+
+[resource]
+script = ExtResource("1_yunjk")
+background = SubResource("PlaceholderTexture2D_frf6c")
+targets = Array[Resource("res://data/targets/target.gd")]([SubResource("Resource_dgv7e"), SubResource("Resource_keapa"), SubResource("Resource_vtkiw")])
+intro = "Just gotta find the matchbox."

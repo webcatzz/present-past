@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bn6eumbulx1yq"]
+
+[ext_resource type="Script" path="res://data/rooms/room.gd" id="1_5k1fo"]
+[ext_resource type="Texture2D" uid="uid://51q65o7finrp" path="res://assets/rooms/traincar.png" id="1_plidp"]
+[ext_resource type="Script" path="res://data/targets/portal.gd" id="2_d1tsr"]
+[ext_resource type="AudioStream" uid="uid://bnlmmakw8onku" path="res://assets/sfx/train.mp3" id="2_x4x15"]
+
+[sub_resource type="Resource" id="Resource_42aly"]
+script = ExtResource("2_d1tsr")
+destination = "traincar_desk"
+names = PackedStringArray("desk", "table")
+sfx = ""
+description = ""
+
+[resource]
+script = ExtResource("1_5k1fo")
+background = ExtResource("1_plidp")
+targets = Array[Resource("res://data/targets/target.gd")]([SubResource("Resource_42aly")])
+music = ExtResource("2_x4x15")
+intro = ""

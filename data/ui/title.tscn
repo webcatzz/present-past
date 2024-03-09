@@ -1,0 +1,179 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxmr7rwhgo1av"]
+
+[ext_resource type="Theme" uid="uid://jxry00u4o2pd" path="res://assets/ui/theme.tres" id="1_c7o8n"]
+[ext_resource type="Texture2D" uid="uid://dlk0t33j2oan6" path="res://assets/ui/name_enter.png" id="2_okvyx"]
+[ext_resource type="Script" path="res://data/ui/title.gd" id="2_t5m4q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6gel"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_4uwqf"]
+resource_name = "blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [25, 26, 25]
+}
+
+[sub_resource type="Animation" id="Animation_5cxl4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmbhr"]
+_data = {
+"RESET": SubResource("Animation_5cxl4"),
+"blink": SubResource("Animation_4uwqf")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ogjgd"]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_okvyx")
+texture_margin_left = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_peh0l"]
+
+[sub_resource type="Animation" id="Animation_qcdrc"]
+resource_name = "fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o24hp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4sn4"]
+_data = {
+"RESET": SubResource("Animation_o24hp"),
+"fade_out": SubResource("Animation_qcdrc")
+}
+
+[node name="Root" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_c7o8n")
+theme_override_styles/panel = SubResource("StyleBoxFlat_w6gel")
+tabs_visible = false
+script = ExtResource("2_t5m4q")
+
+[node name="TitleScreen" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TitleScreen"]
+custom_minimum_size = Vector2(109, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.376471, 0.133333, 0.0901961, 1)
+text = "> textbox adventure demo |"
+visible_characters = 25
+visible_ratio = 0.961538
+
+[node name="Animator" type="AnimationPlayer" parent="TitleScreen/Title"]
+autoplay = "blink"
+libraries = {
+"": SubResource("AnimationLibrary_tmbhr")
+}
+
+[node name="Buttons" type="VBoxContainer" parent="TitleScreen"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 3.0
+theme_override_constants/separation = 4
+
+[node name="Start" type="Button" parent="TitleScreen/Buttons"]
+layout_mode = 2
+text = "start"
+
+[node name="Settings" type="Button" parent="TitleScreen/Buttons"]
+layout_mode = 2
+text = "settings"
+
+[node name="Quit" type="Button" parent="TitleScreen/Buttons"]
+layout_mode = 2
+text = "quit"
+
+[node name="Name" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Name"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="Name/VBox"]
+layout_mode = 2
+text = "Enter your name:"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Name/VBox"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ogjgd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_peh0l")
+alignment = 1
+
+[node name="OK" type="Button" parent="Name/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "OK"
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r4sn4")
+}
+
+[connection signal="pressed" from="TitleScreen/Buttons/Start" to="." method="on_start_pressed"]
+[connection signal="pressed" from="TitleScreen/Buttons/Settings" to="." method="on_settings_pressed"]
+[connection signal="pressed" from="TitleScreen/Buttons/Quit" to="." method="on_quit_pressed"]
+[connection signal="pressed" from="Name/VBox/OK" to="." method="on_name_entered"]

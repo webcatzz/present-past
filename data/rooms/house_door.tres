@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dmmfkkyrl2w7k"]
+
+[ext_resource type="Texture2D" uid="uid://bmk1qbt2jh5a5" path="res://assets/rooms/house_door.png" id="1_fibcy"]
+[ext_resource type="Script" path="res://data/rooms/room.gd" id="2_6sdh7"]
+[ext_resource type="Script" path="res://data/targets/door.gd" id="3_31sjv"]
+[ext_resource type="Texture2D" uid="uid://c7pealog7o1p2" path="res://assets/rooms/house_door_door.png" id="4_piwhc"]
+
+[sub_resource type="Resource" id="Resource_jy0te"]
+script = ExtResource("3_31sjv")
+key_id = "housekey"
+locked = true
+destination = "living_room"
+sprite = ExtResource("4_piwhc")
+position = Vector2(29, 0)
+visible = true
+frames = PackedFloat32Array(0, 1, 2, 0.5, 0.1, 0.1, 0.1, 0.05, 0)
+frame_sfx = PackedStringArray("", "noise", "noise", "click", "click", "", "click", "noise_low")
+names = PackedStringArray("door")
+sfx = "noise_low"
+description = "The door. Open it?"
+
+[resource]
+script = ExtResource("2_6sdh7")
+background = ExtResource("1_fibcy")
+targets = Array[Resource("res://data/targets/target.gd")]([SubResource("Resource_jy0te")])
+intro = ""

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dulgqj5221luv"]
+
+[ext_resource type="Script" path="res://data/rooms/room.gd" id="2_e317d"]
+[ext_resource type="Script" path="res://data/targets/portal.gd" id="3_h6opm"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tm0m0"]
+size = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_42aly"]
+script = ExtResource("3_h6opm")
+destination = "kitchen"
+names = PackedStringArray("kitchen")
+sfx = ""
+description = ""
+
+[resource]
+script = ExtResource("2_e317d")
+background = SubResource("PlaceholderTexture2D_tm0m0")
+targets = Array[Resource("res://data/targets/target.gd")]([SubResource("Resource_42aly")])
+intro = "God, it's dark--you can't see anything! If you remember, though, there's matches in the kitchen in the next room over."

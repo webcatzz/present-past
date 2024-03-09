@@ -1,0 +1,80 @@
+[gd_resource type="Resource" load_steps=15 format=3 uid="uid://cne48jjvblm8s"]
+
+[ext_resource type="Texture2D" uid="uid://dlplqwiw4ka10" path="res://assets/rooms/traincar_desk.png" id="1_gyjmk"]
+[ext_resource type="Script" path="res://data/rooms/room.gd" id="2_wvfvh"]
+[ext_resource type="Script" path="res://data/targets/visible_target.gd" id="3_dllhr"]
+[ext_resource type="Texture2D" uid="uid://brt4ayomxrf4" path="res://assets/rooms/traincar_desk_objects.png" id="4_t17li"]
+[ext_resource type="Script" path="res://data/targets/portal.gd" id="5_86nxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paka7"]
+atlas = ExtResource("4_t17li")
+region = Rect2(0, 126, 43, 47)
+
+[sub_resource type="Resource" id="Resource_e4m26"]
+script = ExtResource("3_dllhr")
+sprite = SubResource("AtlasTexture_paka7")
+position = Vector2(31, 19)
+visible = true
+frames = PackedFloat32Array()
+frame_sfx = PackedStringArray()
+names = PackedStringArray("phone")
+sfx = ""
+description = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh7ob"]
+atlas = ExtResource("4_t17li")
+region = Rect2(43, 126, 49, 39)
+
+[sub_resource type="Resource" id="Resource_d56co"]
+script = ExtResource("3_dllhr")
+sprite = SubResource("AtlasTexture_kh7ob")
+position = Vector2(105, 26)
+visible = true
+frames = PackedFloat32Array()
+frame_sfx = PackedStringArray()
+names = PackedStringArray("phone")
+sfx = ""
+description = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxcsm"]
+atlas = ExtResource("4_t17li")
+region = Rect2(92, 126, 33, 27)
+
+[sub_resource type="Resource" id="Resource_wav7m"]
+script = ExtResource("3_dllhr")
+sprite = SubResource("AtlasTexture_mxcsm")
+position = Vector2(114, 53)
+visible = true
+frames = PackedFloat32Array()
+frame_sfx = PackedStringArray()
+names = PackedStringArray("phone")
+sfx = ""
+description = ""
+
+[sub_resource type="Resource" id="Resource_dbn4w"]
+script = ExtResource("5_86nxa")
+destination = "house_outside"
+names = PackedStringArray("off", "house")
+sfx = ""
+description = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67wkt"]
+atlas = ExtResource("4_t17li")
+region = Rect2(0, 0, 190, 126)
+
+[sub_resource type="Resource" id="Resource_grwe4"]
+script = ExtResource("3_dllhr")
+sprite = SubResource("AtlasTexture_67wkt")
+position = Vector2(0, 0)
+visible = true
+frames = PackedFloat32Array()
+frame_sfx = PackedStringArray()
+names = PackedStringArray()
+sfx = ""
+description = ""
+
+[resource]
+script = ExtResource("2_wvfvh")
+background = ExtResource("1_gyjmk")
+targets = Array[Resource("res://data/targets/target.gd")]([SubResource("Resource_e4m26"), SubResource("Resource_d56co"), SubResource("Resource_wav7m"), SubResource("Resource_dbn4w"), SubResource("Resource_grwe4")])
+intro = ""
